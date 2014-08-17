@@ -77,7 +77,7 @@ public class Test {
 		Test t = new Test();
 //		t.testGetDBs();
 //		t.count();
-//		t.queryMulti2();
-		t.copyData();
+		t.queryMulti2();
+//		t.copyData();
 	}
 }

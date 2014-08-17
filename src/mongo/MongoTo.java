@@ -46,6 +46,7 @@ public class MongoTo{
                       options.socketTimeout = 0;
                       options.connectTimeout = 15000;
                       options.threadsAllowedToBlockForConnectionMultiplier = 5000;
+                      
 			//事实上，Mongo实例代表了一个数据库连接池，即使在多线程的环境中，一个Mongo实例对我们来说已经足够了
 			mongo = new Mongo(new ServerAddress(LocalHost, PORT),options);
 			//mongo = new Mongo(DBMongoConfig.getHost(),DBMongoConfig.getPort());
