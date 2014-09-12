@@ -9,12 +9,16 @@ Desktop.ini
 $RECYCLE.BIN/
 
 # Windows Installer files
+.settings
 *.cab
 *.msi
 *.msm
 *.msp
 *.bak
 bin/
+*.hprof
+target/*
+target/
 # =========================
 # Operating System Files
 # =========================

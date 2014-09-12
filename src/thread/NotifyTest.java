@@ -37,7 +37,19 @@ public class NotifyTest {
 			NotifyTest.Waiter tt = new Waiter(i+"");
 			pool.execute(tt);
 		}
-		lock.notify();
+		int i = 0;
+		while(i<100){
+			i++;
+			try {
+				Thread.sleep(2*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		synchronized (lock) {
+			lock.notify();
+		}
+		}
 		pool.shutdown();
 	}
 	public void testNotifyAll(){
@@ -46,10 +58,22 @@ public class NotifyTest {
 			NotifyTest.Waiter tt = new Waiter(i+"");
 			pool.execute(tt);
 		}
-		lock.notifyAll();
+		int i = 0;
+		while(i<100){
+			i++;
+			try {
+				Thread.sleep(2*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		synchronized (lock) {
+			lock.notifyAll();
+		}
+		}
 		pool.shutdown();
 	}
 	public static void main(String[] args) {
-		new NotifyTest().testNotifyAll();
+		new NotifyTest().testNotify();
 	}
 }
