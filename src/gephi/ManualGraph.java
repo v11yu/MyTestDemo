@@ -152,10 +152,11 @@ public class ManualGraph {
 	@SuppressWarnings("deprecation")
 	public static void killThread(){
 		ThreadGroup tg = Thread.currentThread().getThreadGroup();
-
 		Thread thrds[] = new Thread[tg.activeCount()];
 		tg.enumerate(thrds);
+		if(thrds == null) System.out.println("null");
 		for(Thread t:thrds){
+			if(t == null) continue;
 			if(t.getName().equals("graph-event-bus") || t.getName().equals("DHNS View Destructor") || t.getName().equals("attribute-event-bus"))
 				t.stop();
 		}
@@ -163,9 +164,7 @@ public class ManualGraph {
 	}
 	public static void prntThreadNum(String str){
 		ThreadGroup tg = Thread.currentThread().getThreadGroup();
- 
 		System.out.println(str + tg.activeCount());
-		
 		
 	}
 	public static void main(String[] args) throws InterruptedException {
@@ -173,7 +172,7 @@ public class ManualGraph {
 		
 		try {
 			while (count > 0) {
-				Thread.sleep(5*1000);
+				//Thread.sleep(1*1000);
 				ManualGraph manualG = new ManualGraph();
 				manualG.script();
 				//killThread();
