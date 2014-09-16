@@ -39,6 +39,7 @@ import org.openide.util.Lookup;
 import utils.ReadFile;
 
 
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -134,16 +135,7 @@ public class PropagationGraphCreator1 {
 		
 	}
 
-	/**
-	 * 传播图进行调整
-	 * 先将传播图划分成不同的Partition，
-	 * 然后再将不同的Partition染上不同的颜色，
-	 * 然后在调整每个节点的大小，
-	 * 然后调用YifanHu算法进行自动布局,
-	 * 最后删除多余的属性，以便减小生成的文件的大小.
-	 * @since 2013.8.2
-	 */
-	public void adjust() {
+	public void Partition() {
 		AttributeModel attributeModel = null;
 		synchronized (pc) {
 			pc.openWorkspace(workspace);
@@ -225,10 +217,10 @@ public class PropagationGraphCreator1 {
 			return;
 		}
 		
-		creator.adjust();
+		creator.Partition();
 		creator.export("gexf" + File.separator + id + ".gexf");
 	}
 	public static void main(String[] args) throws NumberFormatException, Exception {
-		test(1+"");
+		test("1000001");
 	}
 }
