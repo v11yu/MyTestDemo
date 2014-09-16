@@ -21,13 +21,18 @@ package gephi;
  along with Gephi.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.lang.reflect.Field;
+
+import org.apache.log4j.Logger;
 import org.gephi.graph.api.*;
 import org.gephi.graph.*;
 import org.gephi.project.api.ProjectController;
 import org.gephi.project.api.Workspace;
 import org.gephi.project.impl.ProjectControllerImpl;
 import org.openide.util.Lookup;
+import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
+import org.openide.util.lookup.Lookups;
 
 /**
  * This demo shows basic features from GraphAPI, how to create and query a graph
@@ -36,18 +41,21 @@ import org.openide.util.lookup.InstanceContent;
  * @author Mathieu Bastian
  */
 public class ManualGraph {
+	private final Logger log = Logger.getLogger(this.getClass());
 	ProjectController pc;
 	private void MyPrintln(String str){
 		System.out.println(str);
 	}
-	private void release(Workspace workspace){
-		pc.deleteWorkspace(workspace);
-		
+	private void release() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
+		Lookup obj = Lookup.getDefault();
+		Field personNameField = Lookup.class.getDeclaredField("defaultLookup");
+		personNameField.setAccessible(true);
+		personNameField.set(obj, null);
 	}
 	public void script() {
 		// Init a project - and therefore a workspace
-		pc = new ProjectControllerImpl();
-		//pc = Lookup.getDefault().lookup(ProjectController.class);
+		//pc = new ProjectControllerImpl();
+		pc = Lookup.getDefault().lookup(ProjectController.class);
 		pc.newProject();
 		Workspace workspace = pc.getCurrentWorkspace();
 
@@ -134,39 +142,26 @@ public class ManualGraph {
 		for (Node n : directedGraph.getNodes().toArray()) {
 			directedGraph.removeNode(n);
 		}
-		
-		//cleanUp
-		workspace.remove(graphModel);
-		graphModel.clear();
-		pc.getCurrentProject().remove(graphModel);
-		workspace.remove(graphModel);
-		pc.cleanWorkspace(workspace);
-		pc.deleteWorkspace(workspace);
-		pc.closeCurrentProject();
-		pc.closeCurrentWorkspace();
-		graphModel = null;
-		workspace = null;
-		pc = null;
-		
-	}
-	@SuppressWarnings("deprecation")
-	public static void killThread(){
-		ThreadGroup tg = Thread.currentThread().getThreadGroup();
-		Thread thrds[] = new Thread[tg.activeCount()];
-		tg.enumerate(thrds);
-		if(thrds == null) System.out.println("null");
-		for(Thread t:thrds){
-			if(t == null) continue;
-			if(t.getName().equals("graph-event-bus") || t.getName().equals("DHNS View Destructor") || t.getName().equals("attribute-event-bus"))
-				t.stop();
+		try {
+			release();
+		} catch (Exception e) {
+			log.info("释放内存有问题");
 		}
+		//cleanUp
+//		workspace.remove(graphModel);
+//		graphModel.clear();
+//		pc.getCurrentProject().remove(graphModel);
+//		workspace.remove(graphModel);
+//		pc.cleanWorkspace(workspace);
+//		pc.deleteWorkspace(workspace);
+//		pc.closeCurrentProject();
+//		pc.closeCurrentWorkspace();
+//		graphModel = null;
+//		workspace = null;
+//		pc = null;
 		
 	}
-	public static void prntThreadNum(String str){
-		ThreadGroup tg = Thread.currentThread().getThreadGroup();
-		System.out.println(str + tg.activeCount());
-		
-	}
+	
 	public static void main(String[] args) throws InterruptedException {
 		int count = 100000;
 		
@@ -178,12 +173,12 @@ public class ManualGraph {
 				//killThread();
 				count--;
 				System.out.println(count);
-				killThread();
-				prntThreadNum(" ");
+				//ThreadTools.killThread();
+				ThreadTools.prntThreadNum(" ");
 			}
 		} catch (OutOfMemoryError e) {
 			System.out.println("hehe");
-			killThread();
+			ThreadTools.killThread();
 		}
 //		manualG.script();
 //		killThread();

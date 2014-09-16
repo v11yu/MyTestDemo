@@ -3,6 +3,8 @@ package basic;
 import java.util.ArrayList;
 import java.util.List;
 
+import basic.Person;
+
 /**
  * using to test memory leak
  * make processor outofmemory

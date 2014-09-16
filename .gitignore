@@ -19,6 +19,7 @@ bin/
 *.hprof
 target/*
 target/
+gexf/
 # =========================
 # Operating System Files
 # =========================
