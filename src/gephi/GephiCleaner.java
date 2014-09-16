@@ -14,8 +14,8 @@ import org.openide.util.Lookup;
 public class GephiCleaner {
 	private static final Logger log = Logger.getLogger(GephiCleaner.class);
 	/**
-	 * 清除LookUp容器，gephi中projectControllerImpl调用了netbeans中LookUp的Api
-	 * 设计为singleton模式，但是projectController中存在List成员，导致内存泄露。
+	 * 清除LookUp容器，gephi中projectControllerImpl调用了netbeans中LookUp的api
+	 * 利用java反射，将LookUp中defaultLookup设置为null
 	 * 需要手动删除LookUp容器。
 	 * @date 2014年9月15日
 	 */
@@ -47,5 +47,4 @@ public class GephiCleaner {
 				t.stop();
 		}
 	}
-	
 }

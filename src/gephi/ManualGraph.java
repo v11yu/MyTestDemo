@@ -46,11 +46,8 @@ public class ManualGraph {
 	private void MyPrintln(String str){
 		System.out.println(str);
 	}
-	private void release() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
-		Lookup obj = Lookup.getDefault();
-		Field personNameField = Lookup.class.getDeclaredField("defaultLookup");
-		personNameField.setAccessible(true);
-		personNameField.set(obj, null);
+	private void release(){
+		pc.removeProject(pc.getCurrentProject());
 	}
 	public void script() {
 		// Init a project - and therefore a workspace
@@ -60,8 +57,10 @@ public class ManualGraph {
 		Workspace workspace = pc.getCurrentWorkspace();
 
 		// Get a graph model - it exists because we have a workspace
+		GraphController gc = Lookup.getDefault().lookup(GraphController.class);
+		
+		GraphModel graphModel = gc.getModel(workspace);
 
-		GraphModel graphModel = Lookup.getDefault().lookup(GraphController.class).getModel(workspace);
 		//GraphModel graphModel = Lookup.getDefault().lookup(GraphController.class).getModel();
 		// Create three nodes
 		Node n0 = graphModel.factory().newNode("n0");
@@ -139,26 +138,11 @@ public class ManualGraph {
 		// Due to locking, you need to use toArray() on Iterable to be able to
 		// modify
 		// the graph in a read loop
-		for (Node n : directedGraph.getNodes().toArray()) {
-			directedGraph.removeNode(n);
-		}
-		try {
-			release();
-		} catch (Exception e) {
-			log.info("释放内存有问题");
-		}
-		//cleanUp
-//		workspace.remove(graphModel);
-//		graphModel.clear();
-//		pc.getCurrentProject().remove(graphModel);
-//		workspace.remove(graphModel);
-//		pc.cleanWorkspace(workspace);
-//		pc.deleteWorkspace(workspace);
-//		pc.closeCurrentProject();
-//		pc.closeCurrentWorkspace();
-//		graphModel = null;
-//		workspace = null;
-//		pc = null;
+//		for (Node n : directedGraph.getNodes().toArray()) {
+//			directedGraph.removeNode(n);
+//		}
+		
+		release();
 		
 	}
 	
@@ -174,7 +158,9 @@ public class ManualGraph {
 				count--;
 				System.out.println(count);
 				//ThreadTools.killThread();
-				ThreadTools.prntThreadNum(" ");
+				//GephiCleaner.cleanUpThread();
+				//GephiCleaner.cleanUpLookup();
+				
 			}
 		} catch (OutOfMemoryError e) {
 			System.out.println("hehe");

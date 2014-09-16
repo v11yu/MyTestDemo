@@ -48,7 +48,7 @@ import com.mongodb.DBObject;
 import mongo.*;
 
 public class PropagationGraphCreator1 {
-	private ProjectController pc = null;
+	private ProjectController pc = Lookup.getDefault().lookup(ProjectController.class);
 	private Workspace workspace = null;
 	private Container container = null;
 	private ImportController importController = null;
@@ -61,22 +61,19 @@ public class PropagationGraphCreator1 {
 	
 	public PropagationGraphCreator1(String fileId) throws Exception {
 		// TODO Auto-generated constructor stub
-		// 初始化一些微博的信息
-		
-		// 初始化
+
 		init(fileId);
 		//addEdge(fileId+"to",fileId+"toid",fileId+"b",fileId+"bid");
 	}
 	private void init(String fileId) {
-		pc = Lookup.getDefault().lookup(ProjectController.class);
 		pc.newProject();
 		workspace = pc.getCurrentWorkspace();
-			
+		
 		// append the exist graph file
 		// Append container to graph structure
 		
-		//File file = new File("gexf/3642139672327163.gexf");
-		File file = GridFSManager.getByFileName("3642139672327163"+".gexf", "gexf" + File.separator + "3642139672327163" + ".gexf");
+		File file = new File("gexf/3642139672327163.gexf");
+		//File file = GridFSManager.getByFileName("3642139672327163"+".gexf", "gexf" + File.separator + "3642139672327163" + ".gexf");
 		importController = Lookup.getDefault().lookup(ImportController.class);
 		try {
 			container = importController.importFile(file);
@@ -199,8 +196,14 @@ public class PropagationGraphCreator1 {
 		}
 	}
 	
-
-	
+	/**
+	 * 清除LookUp中projectImpl
+	 * 
+	 * @date 2014年9月16日
+	 */
+	public void clean(){
+		pc.removeProject(pc.getCurrentProject());
+	}
 	/**
 	 *	单元测试
 	 * @throws NumberFormatException
@@ -217,8 +220,9 @@ public class PropagationGraphCreator1 {
 			return;
 		}
 		
-		creator.Partition();
+		//creator.Partition();
 		creator.export("gexf" + File.separator + id + ".gexf");
+		creator.clean();
 	}
 	public static void main(String[] args) throws NumberFormatException, Exception {
 		test("1000001");
