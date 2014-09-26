@@ -1,0 +1,53 @@
+2014-09-26 16:59:46 INFO   [main] Hello World
+2014-09-26 17:11:31 INFO   [main] Hello World
+2014-09-26 17:34:12 INFO   [onAccept] [127.0.0.1:59471] : Connected
+2014-09-26 17:34:12 INFO   [onAccept] [127.0.0.1:4730] : Connected
+2014-09-26 17:34:12 INFO   [sendPacket] [127.0.0.1:4730] : OUT : SUBMIT_JOB
+2014-09-26 17:34:12 INFO   [onPacketReceived] [127.0.0.1:59471] : IN  : SUBMIT_JOB
+2014-09-26 17:34:12 INFO   [sendPacket] [127.0.0.1:59471] : OUT : JOB_CREATED
+2014-09-26 17:34:12 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : JOB_CREATED
+2014-09-26 17:34:33 INFO   [onAccept] [127.0.0.1:59472] : Connected
+2014-09-26 17:34:33 INFO   [onAccept] [127.0.0.1:4730] : Connected
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:4730] : OUT : CAN_DO
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : CAN_DO
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:4730] : OUT : GRAB_JOB
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : GRAB_JOB
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:59472] : OUT : JOB_ASSIGN
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : JOB_ASSIGN
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:4730] : OUT : WORK_COMPLETE
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:4730] : OUT : GRAB_JOB
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : WORK_COMPLETE
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:59471] : OUT : WORK_COMPLETE
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : WORK_COMPLETE
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : GRAB_JOB
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:59472] : OUT : NO_JOB
+2014-09-26 17:34:33 INFO   [onDisconnect] [127.0.0.1:59471] : Disconnected
+2014-09-26 17:34:33 INFO   [onDisconnect] [127.0.0.1:4730] : Disconnected
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : NO_JOB
+2014-09-26 17:34:33 INFO   [sendPacket] [127.0.0.1:4730] : OUT : PRE_SLEEP
+2014-09-26 17:34:33 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : PRE_SLEEP
+2014-09-26 17:35:29 INFO   [onAccept] [127.0.0.1:59476] : Connected
+2014-09-26 17:35:29 INFO   [onAccept] [127.0.0.1:4730] : Connected
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:4730] : OUT : SUBMIT_JOB
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:59476] : IN  : SUBMIT_JOB
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:59476] : OUT : JOB_CREATED
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:59472] : OUT : NOOP
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : NOOP
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:4730] : OUT : GRAB_JOB
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : GRAB_JOB
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : JOB_CREATED
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:59472] : OUT : JOB_ASSIGN
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : JOB_ASSIGN
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:4730] : OUT : WORK_COMPLETE
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:4730] : OUT : GRAB_JOB
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : WORK_COMPLETE
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:59476] : OUT : WORK_COMPLETE
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : WORK_COMPLETE
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : GRAB_JOB
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:59472] : OUT : NO_JOB
+2014-09-26 17:35:29 INFO   [onDisconnect] [127.0.0.1:59476] : Disconnected
+2014-09-26 17:35:29 INFO   [onDisconnect] [127.0.0.1:4730] : Disconnected
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:4730] : IN : NO_JOB
+2014-09-26 17:35:29 INFO   [sendPacket] [127.0.0.1:4730] : OUT : PRE_SLEEP
+2014-09-26 17:35:29 INFO   [onPacketReceived] [127.0.0.1:59472] : IN  : PRE_SLEEP
+2014-09-26 17:35:49 INFO   [onDisconnect] [127.0.0.1:59472] : Disconnected

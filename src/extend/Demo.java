@@ -1,4 +1,4 @@
-package basic.extend;
+package extend;
 abstract class A{
 	int g;
 }

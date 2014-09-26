@@ -36,7 +36,7 @@
 
 
 	<dependencies>
-		
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -57,7 +57,7 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.7.2</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
@@ -89,13 +89,31 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 		</dependency>
+		<!-- gephi -->
 		<dependency>
 			<groupId>org.gephi</groupId>
 			<artifactId>gephi-toolkit</artifactId>
 			<version>0.9</version>
 		</dependency>
+		<!-- java-gearman-service -->
+		<dependency>
+			<groupId>org.gearman.jgs</groupId>
+			<artifactId>java-gearman-service</artifactId>
+			<version>[0.7.0-SNAPSHOT,)</version>
+		</dependency>
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+
 	</dependencies>
 	<repositories>
-      
-   </repositories>
+		<!-- sonatype -->
+		<repository>
+			<id>sonatype</id>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</repository>
+	</repositories>
 </project>
