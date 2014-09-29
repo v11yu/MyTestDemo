@@ -10,7 +10,7 @@ public class MongoConfig {
 	static{
 		try {
 			
-			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("mongodb195.properties"));
+			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("mongodb.properties"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

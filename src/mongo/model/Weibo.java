@@ -9,6 +9,10 @@ public class Weibo {
 	private String uid;
 	private Integer emotion;
 	public Weibo(){}
+	public Weibo(String content,Integer emotion){
+		this.content = content;
+		this.emotion = emotion;
+	}
 	public Weibo(DBObject obj){
 		this.content = (String) obj.get("text");
 		//this.thumbnailPicture = (String) obj.get("tp");
