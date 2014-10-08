@@ -82,7 +82,7 @@ public class MongoDBManager {
 		try {
 			mongo = new Mongo(new ServerAddress(MongoConfig.getValue("hostIp"), MongoConfig.getNum("port")),options);
 		} catch (UnknownHostException e) {
-			log.error("MongoDB connect fail.");
+			log.error("MongoDB connect failed.");
 		}
 		
 	}

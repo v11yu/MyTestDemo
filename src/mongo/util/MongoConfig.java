@@ -9,7 +9,6 @@ public class MongoConfig {
 	private static Properties props = new Properties(); 
 	static{
 		try {
-			
 			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("mongodb.properties"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

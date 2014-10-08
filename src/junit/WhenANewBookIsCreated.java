@@ -22,7 +22,7 @@ public class WhenANewBookIsCreated {
     public MongoDbRule mongoDbRule = newMongoDbRule().defaultManagedMongoDb("test");
 
 	@Test
-	//@UsingDataSet(locations="initialData.json", loadStrategy=LoadStrategyEnum.CLEAN_INSERT)
+	@UsingDataSet(locations="initialData.json", loadStrategy=LoadStrategyEnum.CLEAN_INSERT)
 	@ShouldMatchDataSet(location="expectedData.json")
 	public void book_should_be_inserted_into_repository() {
 		WeiboDao wdao = new WeiboDao("test");
